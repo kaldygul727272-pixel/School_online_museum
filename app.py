@@ -36,7 +36,7 @@ if section == "Басты бет":
     st.subheader("✨ Мұражайға қош келдіңіздер!")
     st.write("Бұл портал Шымкент қаласының «Кешкі мектебінің» тарихын, жетістіктерін цифрландыру мақсатында жасалған.")
     
-    if os.path.exists("школа.jpg"):
+    if os.path.exists("school.png.jpg"):
         st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
     else:
         st.warning("Мектеп суреті жүктелуде...")
