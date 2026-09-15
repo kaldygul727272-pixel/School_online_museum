@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 # 1. Сайттың баптаулары мен тақырыбы
 st.set_page_config(page_title="Шымкент қ. Кешкі мектеп мұражайы", layout="wide")
@@ -35,28 +36,39 @@ if section == "Басты бет":
     st.subheader("✨ Мұражайға қош келдіңіздер!")
     st.write("Бұл портал Шымкент қаласының «Кешкі мектебінің» тарихын, жетістіктерін цифрландыру мақсатында жасалған.")
     
-    # Тұрақты жұмыс істейтін ашық сервердегі мектеп суреті
-    st.image("https://wikimedia.org", caption="«Кешкі мектеп» КММ тарихи шежіресі", width=700)
+    if os.path.exists("школа.jpg"):
+        st.image("школа.jpg", caption="«Кешкі мектеп» КММ ғимараты", use_container_width=True)
+    else:
+        st.warning("Мектеп суреті табылмады.")
     
 elif section == "Басшылық":
     st.subheader("👤 Мектеп басшылығы")
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns()
     with col1:
-        # Тұрақты жұмыс істейтін директордың бейнелік суреті
-        st.image("https://wikimedia.org", caption="Мектеп басшысы", width=250)
+        if os.path.exists("direktor.png.jpeg"):
+            st.image("direktor.png.jpeg", caption="Мектеп басшысы", use_container_width=True)
+        else:
+            st.warning("Директор суреті табылмады.")
     with col2:
         st.markdown("### **Қайранбеков Мейрамхан Дәрменбекович**")
         st.write("**Лауазымы:** Заңды тұлғаның уәкілетті органымен тағайындалған м.а. басқарушы.")
-        st.write("**Тіркелген күні:** 02.07.2026 жылғы ресми анықтама неғимінде.")
-        st.info("«Біздің мақсатымыз — әрбір оқушыға сапалы білім нәрін сеуіп, мектебіміздің тарихын болашақ ұрпаққа цифрлы форматта аманаттау.»")
+        st.write("**Тіркелген күні:** 02.07.2026 жылғы ресми анықтама негізінде.")
+        st.info("«Біздің мақсатымыз — әрбір оқушыға saпалы білім нәрін сеуіп, мектебіміздің тарихын болашақ ұрпаққа цифрлы форматта аманаттау.»")
 
 elif section == "Ұстаздар құрамы":
     st.subheader("👩‍🏫 Мектептің мақтанышы — Ұстаздар")
     st.write("Мектепте қызмет атқаратын тәжірибелі мұғалімдер тізімі мен байланыс нөмірлері:")
     
-    # Мұғалімдер бұрышына арналған тұрақты сурет сілтемесі
-    st.image("https://wikimedia.org", caption="Ұстаздар ұжымы", width=150)
-    
+    # Ұстаздардың суреттерін екі бағанға бөліп әдемі шығару
+    t_col1, t_col2 = st.columns(2)
+    with t_col1:
+        if os.path.exists("amantay.png.jpeg"):
+            st.image("amantay.png.jpeg", caption="Амантай Толқынай", width=220)
+    with t_col2:
+        if os.path.exists("Сауле.jpeg"):
+            st.image("Сауле.jpeg", caption="Айтбекова Сәуле", width=220)
+            
+    st.write("") # Бос орын
     # Кесте шығару
     df_teachers = pd.DataFrame(teachers_data)
     st.table(df_teachers)
@@ -65,10 +77,6 @@ elif section == "Оқушылар базасы":
     st.subheader("🎓 Оқушылар мен түлектер мәліметтер қоры")
     st.write("Мұражайдың осы бөлімінде белсенді оқушылардың тізімін іздеу жүйесі арқылы көруге болады:")
     
-    # Тұрақты оқушылар белгішесі
-    st.image("https://wikimedia.org", caption="Мектеп белсенділері", width=150)
-    
-    # Интерактивті кесте және іздеу
     df_students = pd.DataFrame(students_data)
     search = st.text_input("Оқушының атын жазып іздеңіз:")
     if search:
