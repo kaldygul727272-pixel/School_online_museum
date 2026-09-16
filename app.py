@@ -45,8 +45,8 @@ if section == "Басты бет":
     
     if os.path.exists("school.jpg"):
         st.image("school.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
-    elif os.path.exists("школа.jpg"):
-        st.image("школа.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    elif os.path.exists("school.png.jpg"):
+        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
     else:
         st.warning("Мектеп суреті жүктелуде...")
     
