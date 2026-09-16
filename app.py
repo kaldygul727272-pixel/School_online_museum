@@ -43,10 +43,10 @@ if section == "Басты бет":
     st.subheader("✨ Мұражайға қош келдіңіздер!")
     st.write("Бұл портал Шымкент қаласының «Кешкі мектебінің» тарихын, жетістіктерін цифрландыру мақсатында жасалған.")
     
-    if os.path.exists("school.png.jpg"):
-        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
-    elif os.path.exists("school.png.jpg"):
-        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    if os.path.exists("school.jpg"):
+        st.image("school.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    elif os.path.exists("школа.jpg"):
+        st.image("школа.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
     else:
         st.warning("Мектеп суреті жүктелуде...")
     
@@ -81,38 +81,38 @@ elif section == "Ұстаздар құрамы":
     st.table(df_teachers)
 
 elif section == "Іс-шаралар фотодеректері":
-    st.subheader("📸 Мектеп өмірінен фотодеректер мен іс-шаралар")
-    st.write("Мектебімізде өткен маңызды мәдени, тарихи және қоғамдық іс-шаралардың мұрағаты:")
+    st.subheader("📸 Мектеп өмірінен фотодеректер мен маңызды іс-шаралар")
+    st.write("Мектебімізде өткен маңызды мәдени, тарихи және қоғамдық іс-шаралардың фотогалереясы:")
     
-    event_col1, event_col2 = st.columns(2)
-    with event_col1:
-        img1_name = "WhatsApp Image 2026-09-07 at 10.20.40.jpeg"
-        if os.path.exists(img1_name):
-            st.image(img1_name, caption="Мектепшілік маңызды іс-шарадан естелік", use_container_width=True)
+    # 5 жаңа суретті бағандарға бөліп әдемі орналастыру
+    col_a, col_b = st.columns(2)
+    with col_a:
+        if os.path.exists("school1.jpeg"):
+            st.image("school1.jpeg", caption="Мектеп өмірінен көрініс (1)", use_container_width=True)
+        if os.path.exists("school3.jpeg"):
+            st.image("school3.jpeg", caption="Мектеп өмірінен көрініс (3)", use_container_width=True)
+        if os.path.exists("school5.jpeg"):
+            st.image("school5.jpeg", caption="Мектеп өмірінен көрініс (5)", use_container_width=True)
             
-    with event_col2:
-        img2_name = "school1.jpeg"
-        if os.path.exists(img2_name):
-            st.image(img2_name, caption="Ұстаздар мен оқушылардың кездесу сәті", use_container_width=True)
+    with col_b:
+        if os.path.exists("school2.jpeg"):
+            st.image("school2.jpeg", caption="Мектеп өмірінен көрініс (2)", use_container_width=True)
+        if os.path.exists("school4.jpeg"):
+            st.image("school4.jpeg", caption="Мектеп өмірінен көрініс (4)", use_container_width=True)
 
-    # 🎥 ЖАҢА ВИДЕО БЛОГЫ
-    st.write("---") # Бөліп тұратын сызық
+    # 🎥 СІЗ ЖІБЕРГЕН ФЕЙСБУК ВИДЕОЛАР БЛОГЫ
+    st.write("---") 
     st.subheader("🎥 Мектептің виртуалды видеомұрағаты")
-    st.write("Мектеп өмірі мен тарихы туралы бейнебаяндарды тікелей порталдан тамашалаңыз:")
+    st.write("Facebook әлеуметтік желісіндегі мектептің ресми іс-шаралары мен бейнероликтері:")
     
-    video_col1, video_col2 = st.columns(2)
-    with video_col1:
-        # 1-әдіс: Егер видеоңыз YouTube-та болса (Мысал ретінде ашық сілтеме қойылды)
-        st.video("https://www.facebook.com/share/r/1CTynihoVH/?mibextid=wwXIfr")
-        st.caption("📽 «Мектеп тынысы» — Тарихи бейнеролик (YouTube арқылы)")
+    v_col1, v_col2 = st.columns(2)
+    with v_col1:
+        st.video("https://www.facebook.com/share/r/1CTynihoVH/")
+        st.caption("📽 Мектептің салтанатты іс-шарасы (1-видео)")
         
-    with video_col2:
-        # 2-әдіс: Егер видеоны GitHub-қа "video.mp4" деп жүктесеңіз, осы блок жұмыс істейді:
-        if os.path.exists("https://www.facebook.com/share/r/1PoZLUPL3X/?mibextid=wwXIfr"):
-            st.video("https://www.facebook.com/share/r/1PoZLUPL3X/?mibextid=wwXIfr")
-            st.caption("🎞 Салтанатты іс-шарадан тікелей видеожазба (GitHub ішінен)")
-        else:
-            st.info("📂 Қосымша дербес видео файл жүктеу үшін оны GitHub-қа 'video.mp4' атауымен жүктеңіз.")
+    with v_col2:
+        st.video("https://www.facebook.com/share/r/1PoZLUPL3X/")
+        st.caption("🎞 Мектеп тынысы мен маңызды сәттер (2-видео)")
 
 elif section == "Оқушылар базасы":
     st.subheader("🎓 Оқушылар мен түлектер мәліметтер қоры")
@@ -132,5 +132,5 @@ elif section == "Кері байланыс":
     name = st.text_input("Аты-жөніңіз:")
     info_type = st.selectbox("Ақпарат түрі:", ["Ұстаз туралы", "Оқушы туралы", "Тарихи жәдігер"])
     text = st.text_area("Сипаттамасы немесе ұсынысыңыз:")
-    if st.button("Мәліметті㉖беріу"):
+    if st.button("Мәліметті жіберу"):
         st.success("Рахмет! Мәлімет қабылданды, тексерістен кейін базаға автоматты түрде қосылады.")
