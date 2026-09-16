@@ -43,10 +43,10 @@ if section == "Басты бет":
     st.subheader("✨ Мұражайға қош келдіңіздер!")
     st.write("Бұл портал Шымкент қаласының «Кешкі мектебінің» тарихын, жетістіктерін цифрландыру мақсатында жасалған.")
     
-    if os.path.exists("school.jpg"):
-        st.image("school.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
-    elif os.path.exists("школа.jpg"):
-        st.image("школа.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    if os.path.exists("school.png.jpg"):
+        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    elif os.path.exists("school.png.jpg"):
+        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
     else:
         st.warning("Мектеп суреті жүктелуде...")
     
@@ -91,7 +91,7 @@ elif section == "Іс-шаралар фотодеректері":
             st.image(img1_name, caption="Мектепшілік маңызды іс-шарадан естелік", use_container_width=True)
             
     with event_col2:
-        img2_name = "WhatsApp Image 2026-09-07 at 13.18.59.jpeg"
+        img2_name = "school1.jpeg"
         if os.path.exists(img2_name):
             st.image(img2_name, caption="Ұстаздар мен оқушылардың кездесу сәті", use_container_width=True)
 
@@ -103,13 +103,13 @@ elif section == "Іс-шаралар фотодеректері":
     video_col1, video_col2 = st.columns(2)
     with video_col1:
         # 1-әдіс: Егер видеоңыз YouTube-та болса (Мысал ретінде ашық сілтеме қойылды)
-        st.video("https://youtube.com")
+        st.video("https://www.facebook.com/share/r/1CTynihoVH/?mibextid=wwXIfr")
         st.caption("📽 «Мектеп тынысы» — Тарихи бейнеролик (YouTube арқылы)")
         
     with video_col2:
         # 2-әдіс: Егер видеоны GitHub-қа "video.mp4" деп жүктесеңіз, осы блок жұмыс істейді:
-        if os.path.exists("video.mp4"):
-            st.video("video.mp4")
+        if os.path.exists("https://www.facebook.com/share/r/1PoZLUPL3X/?mibextid=wwXIfr"):
+            st.video("https://www.facebook.com/share/r/1PoZLUPL3X/?mibextid=wwXIfr")
             st.caption("🎞 Салтанатты іс-шарадан тікелей видеожазба (GitHub ішінен)")
         else:
             st.info("📂 Қосымша дербес видео файл жүктеу үшін оны GitHub-қа 'video.mp4' атауымен жүктеңіз.")
