@@ -30,14 +30,23 @@ students_data = [
 
 # 3. Сайттың интерфейсі (Сайдбар мәзірі)
 st.sidebar.header("Мұражай бөлімдері")
-section = st.sidebar.radio("Көру үшін таңдаңыз:", ["Басты бет", "Басшылық", "Ұстаздар құрамы", "Оқушылар базасы", "Кері байланыс"])
+section = st.sidebar.radio("Көру үшін таңдаңыз:", [
+    "Басты бет", 
+    "Басшылық", 
+    "Ұстаздар құрамы", 
+    "Іс-шаралар фотодеректері", 
+    "Оқушылар базасы", 
+    "Кері байланыс"
+])
 
 if section == "Басты бет":
     st.subheader("✨ Мұражайға қош келдіңіздер!")
     st.write("Бұл портал Шымкент қаласының «Кешкі мектебінің» тарихын, жетістіктерін цифрландыру мақсатында жасалған.")
     
-    if os.path.exists("school.png.jpg"):
-        st.image("school.png.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    if os.path.exists("school.jpg"):
+        st.image("school.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
+    elif os.path.exists("школа.jpg"):
+        st.image("школа.jpg", caption="«Кешкі мектеп» КММ ғимараты", width=600)
     else:
         st.warning("Мектеп суреті жүктелуде...")
     
@@ -59,7 +68,6 @@ elif section == "Ұстаздар құрамы":
     st.subheader("👩‍🏫 Мектептің мақтанышы — Ұстаздар")
     st.write("Мектепте қызмет атқаратын тәжірибелі мұғалімдер тізімі мен байланыс нөмірлері:")
     
-    # Ұстаздардың суреттерін қатар әрі шағын өлшемде шығару
     t_col1, t_col2 = st.columns(2)
     with t_col1:
         if os.path.exists("amantay.png.jpeg"):
@@ -71,6 +79,40 @@ elif section == "Ұстаздар құрамы":
     st.write("") 
     df_teachers = pd.DataFrame(teachers_data)
     st.table(df_teachers)
+
+elif section == "Іс-шаралар фотодеректері":
+    st.subheader("📸 Мектеп өмірінен фотодеректер мен іс-шаралар")
+    st.write("Мектебімізде өткен маңызды мәдени, тарихи және қоғамдық іс-шаралардың мұрағаты:")
+    
+    event_col1, event_col2 = st.columns(2)
+    with event_col1:
+        img1_name = "WhatsApp Image 2026-09-07 at 10.20.40.jpeg"
+        if os.path.exists(img1_name):
+            st.image(img1_name, caption="Мектепшілік маңызды іс-шарадан естелік", use_container_width=True)
+            
+    with event_col2:
+        img2_name = "WhatsApp Image 2026-09-07 at 13.18.59.jpeg"
+        if os.path.exists(img2_name):
+            st.image(img2_name, caption="Ұстаздар мен оқушылардың кездесу сәті", use_container_width=True)
+
+    # 🎥 ЖАҢА ВИДЕО БЛОГЫ
+    st.write("---") # Бөліп тұратын сызық
+    st.subheader("🎥 Мектептің виртуалды видеомұрағаты")
+    st.write("Мектеп өмірі мен тарихы туралы бейнебаяндарды тікелей порталдан тамашалаңыз:")
+    
+    video_col1, video_col2 = st.columns(2)
+    with video_col1:
+        # 1-әдіс: Егер видеоңыз YouTube-та болса (Мысал ретінде ашық сілтеме қойылды)
+        st.video("https://youtube.com")
+        st.caption("📽 «Мектеп тынысы» — Тарихи бейнеролик (YouTube арқылы)")
+        
+    with video_col2:
+        # 2-әдіс: Егер видеоны GitHub-қа "video.mp4" деп жүктесеңіз, осы блок жұмыс істейді:
+        if os.path.exists("video.mp4"):
+            st.video("video.mp4")
+            st.caption("🎞 Салтанатты іс-шарадан тікелей видеожазба (GitHub ішінен)")
+        else:
+            st.info("📂 Қосымша дербес видео файл жүктеу үшін оны GitHub-қа 'video.mp4' атауымен жүктеңіз.")
 
 elif section == "Оқушылар базасы":
     st.subheader("🎓 Оқушылар мен түлектер мәліметтер қоры")
@@ -90,6 +132,5 @@ elif section == "Кері байланыс":
     name = st.text_input("Аты-жөніңіз:")
     info_type = st.selectbox("Ақпарат түрі:", ["Ұстаз туралы", "Оқушы туралы", "Тарихи жәдігер"])
     text = st.text_area("Сипаттамасы немесе ұсынысыңыз:")
-    if st.button("Мәліметті жіберу"):
+    if st.button("Мәліметті㉖беріу"):
         st.success("Рахмет! Мәлімет қабылданды, тексерістен кейін базаға автоматты түрде қосылады.")
-        
